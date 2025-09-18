@@ -43,7 +43,11 @@ git clone https://github.com/Shiyuuu530/database-speed-comparison.git
 npm install
 
 ### 3.Create .env.local
-Add your database connection URLs
+Add your database connection URLs:
+
+POSTGRES_URL=postgresql://<your-user>:<password>@<your-neon-host>/<db>?sslmode=require
+REDIS_URL=redis://:<your-password>@<your-redis-host>:<port>
+✅ Note: If using Redis TLS (rediss://), ensure your Redis client supports SSL.
 
 ### 4. Seed Test Data
 For PostgreSQL (Neon)
@@ -67,3 +71,8 @@ Or run the seed script in lib/seed-redis.ts if available.
 ### 5. Run the App
 npm run dev
 Visit: http://localhost:3000
+
+📊 Why is Redis Faster?
+Redis stores all data in memory, allowing sub-millisecond access.
+PostgreSQL reads from disk, optimized for consistency and complex queries, but slower for large volume lookups.
+Redis is great for cache-like performance; Postgres is better for relational querying.
