@@ -37,6 +37,7 @@ This project aims to:
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
+git clone https://github.com/Shiyuuu530/database-speed-comparison.git
 
 ### 2.Install Dependencies
 npm install
