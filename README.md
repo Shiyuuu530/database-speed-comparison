@@ -43,10 +43,10 @@ git clone https://github.com/Shiyuuu530/database-speed-comparison.git
 npm install
 
 ### 3.Create .env.local
-Add your database connection URLs:
+Add your database connection URLs:<br>
 
-POSTGRES_URL=postgresql://<your-user>:<password>@<your-neon-host>/<db>?sslmode=require
-REDIS_URL=redis://:<your-password>@<your-redis-host>:<port>
+POSTGRES_URL=postgresql://<your-user>:<password>@<your-neon-host>/<db>?sslmode=require <br>
+REDIS_URL=redis://:<your-password>@<your-redis-host>:<port> <br>
 ✅ Note: If using Redis TLS (rediss://), ensure your Redis client supports SSL.
 
 ### 4. Seed Test Data
@@ -55,24 +55,24 @@ CREATE TABLE IF NOT EXISTS messages (
   id TEXT,
   content TEXT,
   timestamp BIGINT
-);
+);<br>
 
-INSERT INTO messages (id, content, timestamp) VALUES
-('1', 'Hello from Neon!', 1695000000000),
-('2', 'Second message', 1696000000000),
-('3', 'Testing message 3', 1697000000000);
-For Redis
-Use a sorted set like:
-ZADD messages:redis 1695000000000 '{"id":"1","content":"Hello from Redis!","timestamp":1695000000000}'
-ZADD messages:redis 1696000000000 '{"id":"2","content":"Second message","timestamp":1696000000000}'
-ZADD messages:redis 1697000000000 '{"id":"3","content":"Testing message 3","timestamp":1697000000000}'
+INSERT INTO messages (id, content, timestamp) VALUES<br>
+('1', 'Hello from Neon!', 1695000000000),<br>
+('2', 'Second message', 1696000000000),<br>
+('3', 'Testing message 3', 1697000000000);<br>
+For Redis<br>
+Use a sorted set like:<br>
+ZADD messages:redis 1695000000000 '{"id":"1","content":"Hello from Redis!","timestamp":1695000000000}'<br>
+ZADD messages:redis 1696000000000 '{"id":"2","content":"Second message","timestamp":1696000000000}'<br>
+ZADD messages:redis 1697000000000 '{"id":"3","content":"Testing message 3","timestamp":1697000000000}'<br>
 Or run the seed script in lib/seed-redis.ts if available.
 
 ### 5. Run the App
-npm run dev
+npm run dev <br>
 Visit: http://localhost:3000
 
-📊 Why is Redis Faster?
-Redis stores all data in memory, allowing sub-millisecond access.
+📊 Why is Redis Faster?<br>
+Redis stores all data in memory, allowing sub-millisecond access.<br>
 PostgreSQL reads from disk, optimized for consistency and complex queries, but slower for large volume lookups.
 Redis is great for cache-like performance; Postgres is better for relational querying.
